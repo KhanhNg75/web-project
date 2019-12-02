@@ -1,0 +1,269 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Crime Record Application</title>
+    <!-- Favicon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="plugins/node-waves/waves.css" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- JQuery DataTable Css -->
+    <link href="plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- Custom Css -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="css/themes/all-themes.css" rel="stylesheet" />
+</head>
+
+<body class="theme-cyan">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Top Bar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand" href="index.html">CRIME RECORD APPLICATION</a>
+            </div>
+        </div>
+    </nav>
+    <!-- #Top Bar -->
+    <section>
+        <!-- Left Sidebar -->
+        <aside id="leftsidebar" class="sidebar">
+            <!-- Menu -->
+            <div class="menu">
+                <ul class="list">
+                    <li>
+                        <a href="index.html">
+                            <i class="material-icons">home</i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/chart.html">
+                            <i class="material-icons">pie_chart</i>
+                            <span>Charts</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/map.html">
+                            <i class="material-icons">streetview</i>
+                            <span>Map</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/changelogs.html">
+                            <i class="material-icons">update</i>
+                            <span>Changelogs</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- #Menu -->
+            <!-- Footer -->
+            <div class="legal">
+                <div class="copyright">
+                    &copy; 2019 - 2020 <a href="javascript:void(0);">Open Data Bristol</a>.
+                </div>
+                <div class="author">
+                    <p>Khanh Nguyen - 19044003</p>
+                </div>
+                <div class="version">
+                    <b>Version: </b> 1.0
+                </div>
+            </div>
+            <!-- #Footer -->
+        </aside>
+        <!-- #END# Left Sidebar -->
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Exportable Table -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                EXPORTABLE TABLE
+                            </h2>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                    <div class="header_wrap">
+                                            <div class="num_rows">
+                                            
+                                                    <div class="form-group"> 	<!--		Show Numbers Of Rows 		-->
+                                                         <select class  ="form-control" name="state" id="maxRows">
+                                                             
+                                                             
+                                                             <option value="10">10</option>
+                                                             <option value="15">15</option>
+                                                             <option value="20">20</option>
+                                                             <option value="50">50</option>
+                                                             <option value="70">70</option>
+                                                             <option value="100">100</option>
+                                                <option value="5000">Show ALL Rows</option>
+                                                            </select>
+                                                         
+                                                      </div>
+                                            </div>
+                                            <div class="tb_search">
+                                    <input type="text" id="search_input_all" onkeyup="FilterkeyWord_all_table()" placeholder="Search.." class="form-control">
+                                            </div>
+                                          </div>
+                                <table class="table table-bordered table-striped table-hover dataTable" id='table-id'>
+                                    <thead>
+                                        <tr>
+                                            <th>Ward Name</th>
+                                            <th>Year</th>
+                                            <th>Violent Sexual Offences Rate Per 1000</th>
+                                            <th>Violent Sexual Offences Number</th>
+                                            <th>All Crimes Rate Per 1000</th>
+                                            <th>All Crimes Number</th>
+                                            <th>Burglary Rate Per 1000</th>
+                                            <th>Burglary Number</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Ward Name</th>
+                                            <th>Year</th>
+                                            <th>Violent Sexual Offences Rate Per 1000</th>
+                                            <th>Violent Sexual Offences Number</th>
+                                            <th>All Crimes Rate Per 1000</th>
+                                            <th>All Crimes Number</th>
+                                            <th>Burglary Rate Per 1000</th>
+                                            <th>Burglary Number</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        
+                                    </tbody>
+                                </table>
+
+                                <div class='pagination-container'>
+                                        <nav>
+                                          <ul class="pagination">
+                                           <!--	Here the JS Function Will Add the Rows -->
+                                          </ul>
+                                        </nav>
+                                    </div>
+                              <div class="rows_count">Showing 11 to 20 of 91 entries</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Exportable Table -->
+        </div>
+    </section>
+
+    <!-- Jquery Core Js -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Select Plugin Js -->
+    <script src="plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="plugins/node-waves/waves.js"></script>
+
+    <!-- Custom Js -->
+    <script src="js/admin.js"></script>
+    <script src="js/pages/tables/jquery-datatable.js"></script>
+
+    <script>
+    // All Table search script
+function FilterkeyWord_all_table() {
+  
+  // Count td if you want to search on all table instead of specific column
+  
+    var count = $('.table').children('tbody').children('tr:first-child').children('td').length; 
+  
+          // Declare variables
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("search_input_all");
+    var input_value =     document.getElementById("search_input_all").value;
+          filter = input.value.toLowerCase();
+    if(input_value !=''){
+          table = document.getElementById("table-id");
+          tr = table.getElementsByTagName("tr");
+  
+          // Loop through all table rows, and hide those who don't match the search query
+          for (i = 1; i < tr.length; i++) {
+            
+            var flag = 0;
+             
+            for(j = 0; j < count; j++){
+              td = tr[i].getElementsByTagName("td")[j];
+              if (td) {
+               
+                  var td_text = td.innerHTML;  
+                  if (td.innerHTML.toLowerCase().indexOf(filter) > -1) {
+                  //var td_text = td.innerHTML;  
+                  //td.innerHTML = 'shaban';
+                    flag = 1;
+                  } else {
+                    //DO NOTHING
+                  }
+                }
+              }
+            if(flag==1){
+                       tr[i].style.display = "";
+            }else {
+               tr[i].style.display = "none";
+            }
+          }
+      }else {
+        //RESET TABLE
+        $('#maxRows').trigger('change');
+      }
+  }</script>
+
+    <!-- Demo Js -->
+    <script src="js/demo.js"></script>
+</body>
+
+</html>
