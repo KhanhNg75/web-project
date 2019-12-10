@@ -126,11 +126,12 @@
                         </div>
                         <div class="body">
                             <div class="table-responsive">
-                                    <div class="header_wrap">
-                                            <div class="num_rows">
-                                            
-                                                    <div class="form-group"> 	<!--		Show Numbers Of Rows 		-->
-                                                         <select class  ="form-control" name="state" id="maxRows">
+                                <div class="header_wrap">
+                                    <div class="num_rows">
+
+                                        <div class="form-group">
+                                            <!--		Show Numbers Of Rows 		-->
+                                            <select class="form-control" name="state" id="maxRows">
                                                              
                                                              
                                                              <option value="10">10</option>
@@ -141,13 +142,13 @@
                                                              <option value="100">100</option>
                                                 <option value="5000">Show ALL Rows</option>
                                                             </select>
-                                                         
-                                                      </div>
-                                            </div>
-                                            <div class="tb_search">
-                                    <input type="text" id="search_input_all" onkeyup="FilterkeyWord_all_table()" placeholder="Search.." class="form-control">
-                                            </div>
-                                          </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="tb_search">
+                                        <input type="text" id="search_input_all" onkeyup="FilterkeyWord_all_table()" placeholder="Search.." class="form-control">
+                                    </div>
+                                </div>
                                 <table class="table table-bordered table-striped table-hover dataTable" id='table-id'>
                                     <thead>
                                         <tr>
@@ -174,18 +175,18 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        
+
                                     </tbody>
                                 </table>
 
                                 <div class='pagination-container'>
-                                        <nav>
-                                          <ul class="pagination">
-                                           <!--	Here the JS Function Will Add the Rows -->
-                                          </ul>
-                                        </nav>
-                                    </div>
-                              <div class="rows_count">Showing 11 to 20 of 91 entries</div>
+                                    <nav>
+                                        <ul class="pagination">
+                                            <!--	Here the JS Function Will Add the Rows -->
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="rows_count">Showing 11 to 20 of 91 entries</div>
                             </div>
                         </div>
                     </div>
@@ -215,52 +216,53 @@
     <script src="js/pages/tables/jquery-datatable.js"></script>
 
     <script>
-    // All Table search script
-function FilterkeyWord_all_table() {
-  
-  // Count td if you want to search on all table instead of specific column
-  
-    var count = $('.table').children('tbody').children('tr:first-child').children('td').length; 
-  
-          // Declare variables
-    var input, filter, table, tr, td, i;
-    input = document.getElementById("search_input_all");
-    var input_value =     document.getElementById("search_input_all").value;
-          filter = input.value.toLowerCase();
-    if(input_value !=''){
-          table = document.getElementById("table-id");
-          tr = table.getElementsByTagName("tr");
-  
-          // Loop through all table rows, and hide those who don't match the search query
-          for (i = 1; i < tr.length; i++) {
-            
-            var flag = 0;
-             
-            for(j = 0; j < count; j++){
-              td = tr[i].getElementsByTagName("td")[j];
-              if (td) {
-               
-                  var td_text = td.innerHTML;  
-                  if (td.innerHTML.toLowerCase().indexOf(filter) > -1) {
-                  //var td_text = td.innerHTML;  
-                  //td.innerHTML = 'shaban';
-                    flag = 1;
-                  } else {
-                    //DO NOTHING
-                  }
+        // All Table search script
+        function FilterkeyWord_all_table() {
+
+            // Count td if you want to search on all table instead of specific column
+
+            var count = $('.table').children('tbody').children('tr:first-child').children('td').length;
+
+            // Declare variables
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("search_input_all");
+            var input_value = document.getElementById("search_input_all").value;
+            filter = input.value.toLowerCase();
+            if (input_value != '') {
+                table = document.getElementById("table-id");
+                tr = table.getElementsByTagName("tr");
+
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 1; i < tr.length; i++) {
+
+                    var flag = 0;
+
+                    for (j = 0; j < count; j++) {
+                        td = tr[i].getElementsByTagName("td")[j];
+                        if (td) {
+
+                            var td_text = td.innerHTML;
+                            if (td.innerHTML.toLowerCase().indexOf(filter) > -1) {
+                                //var td_text = td.innerHTML;  
+                                //td.innerHTML = 'shaban';
+                                flag = 1;
+                            } else {
+                                //DO NOTHING
+                            }
+                        }
+                    }
+                    if (flag == 1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
                 }
-              }
-            if(flag==1){
-                       tr[i].style.display = "";
-            }else {
-               tr[i].style.display = "none";
+            } else {
+                //RESET TABLE
+                $('#maxRows').trigger('change');
             }
-          }
-      }else {
-        //RESET TABLE
-        $('#maxRows').trigger('change');
-      }
-  }</script>
+        }
+    </script>
 
     <!-- Demo Js -->
     <script src="js/demo.js"></script>
